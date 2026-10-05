@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ANTES DE PUBLICAR: sustituir [URL WEB] por la dirección real, sin barra final. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>[URL WEB]/</loc></url>
+  <url><loc>[URL WEB]/aviso-legal.html</loc></url>
+  <url><loc>[URL WEB]/politica-privacidad.html</loc></url>
+  <url><loc>[URL WEB]/politica-cookies.html</loc></url>
+</urlset>
