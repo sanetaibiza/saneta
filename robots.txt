@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
 
-# ANTES DE PUBLICAR: sustituir [URL WEB] por la dirección real, sin barra final,
-# y quitar la almohadilla (#) del principio de la línea siguiente.
-# Sitemap: [URL WEB]/sitemap.xml
+Sitemap: https://sanetaibiza.github.io/saneta/sitemap.xml

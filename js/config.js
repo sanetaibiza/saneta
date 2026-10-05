@@ -30,10 +30,10 @@ const WHATSAPP = "[WHATSAPP SA NETA]";
 
 const LOCATION = "Ibiza, Illes Balears";
 
-/* DIRECCIÓN DE LA WEB — todavía sin definir.
-   Cuando exista, escribir la dirección completa, sin barra final
-   (https://www.…). Se usa para completar los datos estructurados. */
-const SITE_URL = "[URL WEB]";
+/* DIRECCIÓN DE LA WEB — ahora, la provisional de GitHub.
+   Al pasar a un dominio propio, escribir aquí la dirección completa, sin
+   barra final (https://www.…). Se usa para completar los datos estructurados. */
+const SITE_URL = "https://sanetaibiza.github.io/saneta";
 
 /* Mensaje que aparece ya escrito al abrir WhatsApp. */
 const WHATSAPP_MESSAGE = "Hola, me gustaría solicitar un presupuesto de limpieza.";
