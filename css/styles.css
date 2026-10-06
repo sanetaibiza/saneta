@@ -410,12 +410,19 @@ h2 {
   .hero-kicker::before, .hero-kicker::after { display: none; }
 }
 
-/* 07. SERVICIOS: cuatro tarjetas con la forma de la puerta en arco */
+/* 07. SERVICIOS: cinco tarjetas con la forma de la puerta en arco */
+/* Cinco tarjetas del mismo tamaño que cuando eran cuatro en fila: tres arriba y dos centradas debajo */
 .services {
+  --svc-gap: clamp(1rem, 2vw, 1.75rem);
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(1rem, 2vw, 1.75rem);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--svc-gap);
+  width: calc(75% - .25 * var(--svc-gap));
+  margin-inline: auto;
 }
+.service { grid-column: span 2; }
+.service:nth-child(4) { grid-column: 2 / span 2; }
+.service:nth-child(5) { grid-column: 4 / span 2; }
 /* Tarjeta en arco: fotografía arriba, icono en un sello sobre el borde de la foto y texto debajo */
 .service {
   display: grid; gap: .9rem; justify-items: center; align-content: start;
@@ -460,11 +467,15 @@ h2 {
 .service p { padding-inline: clamp(1rem, 1.8vw, 1.6rem); color: var(--navy-soft); max-width: 30ch; }
 
 @media (max-width: 1019.98px) {
-  .services { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+  /* Tableta: dos por fila y la quinta centrada */
+  .services { --svc-gap: 1.25rem; grid-template-columns: repeat(4, minmax(0, 1fr)); width: 100%; }
+  .service:nth-child(4) { grid-column: span 2; }
+  .service:nth-child(5) { grid-column: 2 / span 2; }
 }
 @media (max-width: 559.98px) {
   /* En móvil, una tarjeta por fila, con la foto arriba como en ordenador */
-  .services { grid-template-columns: minmax(0, 1fr); gap: .9rem; }
+  .services { --svc-gap: .9rem; grid-template-columns: minmax(0, 1fr); }
+  .service, .service:nth-child(4), .service:nth-child(5) { grid-column: auto; }
   .service { padding-bottom: 1.75rem; }
   .service:hover { transform: none; }
   .service p { padding-inline: 1.5rem; max-width: 32ch; }
