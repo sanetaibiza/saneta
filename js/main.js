@@ -301,7 +301,7 @@
           "Tipo de servicio": data.tipo_servicio,
           "Zona": data.zona,
           "Frecuencia": data.frecuencia,
-          "Mensaje": data.mensaje || "(sin mensaje)",
+          "Descripción del lugar": data.mensaje || "(sin descripción)",
           "_subject": "Solicitud de presupuesto · " + data.tipo_servicio + " · " + data.zona,
           "_template": "table",
           "_captcha": "false"
@@ -344,8 +344,8 @@
         "Zona: " + data.zona,
         "Frecuencia: " + data.frecuencia,
         "",
-        "Mensaje:",
-        data.mensaje || "(sin mensaje)"
+        "Descripción del lugar:",
+        data.mensaje || "(sin descripción)"
       ].join("\n");
 
       window.location.href = "mailto:" + cfg.EMAIL +
