@@ -41,16 +41,20 @@ const WHATSAPP_MESSAGE = "Hola, me gustaría solicitar un presupuesto de limpiez
 /* --------------------------------------------------------------------------
    ENVÍO DEL FORMULARIO DE PRESUPUESTO
    --------------------------------------------------------------------------
-   FORM_ENDPOINT vacío ("")  →  al pulsar SOLICITAR PRESUPUESTO se abre la
-   aplicación de correo del visitante con la solicitud ya redactada y dirigida
-   a EMAIL. Funciona sin ningún servicio externo.
+   El formulario se envía con el servicio gratuito FormSubmit, que reenvía
+   cada solicitud al correo indicado al final de esta dirección. Al terminar,
+   la web muestra el mensaje de agradecimiento.
 
-   Para que el formulario se envíe directamente desde la web, pegar aquí la
-   dirección (URL) que proporcione el servicio de formularios elegido
-   (Formspree, Netlify Forms, Basin, un script propio del hosting…). La web
-   enviará los campos por POST en formato JSON.
+   · La primera vez hay que activar el correo: se envía el formulario una vez
+     y se pulsa el botón de activación del email que manda FormSubmit.
+   · Para cambiar el correo de destino, cambiar la parte final de la dirección.
+   · Con FORM_ENDPOINT vacío ("") no se usa ningún servicio: al pulsar
+     SOLICITAR PRESUPUESTO se abre el correo del visitante con la solicitud
+     ya redactada.
+   · Sirve también la dirección de otro servicio de formularios (Formspree,
+     Basin…): la web envía los campos por POST en formato JSON.
    -------------------------------------------------------------------------- */
-const FORM_ENDPOINT = "";
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/sanetaibiza@gmail.com";
 
 /* --------------------------------------------------------------------------
    OPINIONES DE CLIENTES

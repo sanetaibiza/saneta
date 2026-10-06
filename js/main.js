@@ -215,8 +215,8 @@
 
     /* El texto bajo el botón explica qué pasa al enviar, según cómo esté configurado el envío */
     var note = document.getElementById("form-note");
-    if (note && cfg.FORM_ENDPOINT) {
-      note.textContent = "Recibiremos tu solicitud al momento y te responderemos por email o teléfono.";
+    if (note && !cfg.FORM_ENDPOINT) {
+      note.textContent = "Al pulsar el botón se abrirá tu correo con la solicitud ya escrita: solo tendrás que enviarla.";
     }
 
     function setError(field, message) {
@@ -292,14 +292,40 @@
       /* A) Servicio de formularios configurado en config.js */
       if (cfg.FORM_ENDPOINT) {
         button.disabled = true;
+        /* Lo que llega al correo de SA NETA: los campos con su nombre y, para el servicio de envío,
+           el asunto del mensaje y el formato en tabla. */
+        var payload = {
+          "Nombre": data.nombre,
+          "Teléfono": data.telefono,
+          "email": data.email,
+          "Tipo de servicio": data.tipo_servicio,
+          "Zona": data.zona,
+          "Frecuencia": data.frecuencia,
+          "Mensaje": data.mensaje || "(sin mensaje)",
+          "_subject": "Solicitud de presupuesto · " + data.tipo_servicio + " · " + data.zona,
+          "_template": "table",
+          "_captcha": "false"
+        };
         fetch(cfg.FORM_ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/json", "Accept": "application/json" },
-          body: JSON.stringify(data)
+          body: JSON.stringify(payload)
         }).then(function (response) {
           if (!response.ok) throw new Error("HTTP " + response.status);
+          return response.json().catch(function () { return {}; });
+        }).then(function (result) {
+          /* Algunos servicios responden 200 aunque no hayan enviado nada (por ejemplo, antes de activar el correo) */
+          if (result && String(result.success) === "false") throw new Error(result.message || "no enviado");
           form.reset();
-          showStatus("Hemos recibido tu solicitud. Te responderemos lo antes posible.");
+          var thanks = document.getElementById("form-thanks");
+          if (thanks) {
+            form.hidden = true;
+            thanks.hidden = false;
+            thanks.focus();
+            thanks.scrollIntoView({ block: "center" });
+          } else {
+            showStatus("Hemos recibido tu solicitud. Te responderemos lo antes posible.");
+          }
         }).catch(function () {
           showStatus("No hemos podido enviar la solicitud. Inténtalo de nuevo o escríbenos a " + emailLink + ".", true);
         }).then(function () {

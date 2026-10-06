@@ -797,6 +797,26 @@ h2 {
 .form-note { font-size: .9rem; color: var(--navy-soft); text-align: center; text-wrap: balance; }
 .quote-form .btn[disabled] { opacity: .6; cursor: progress; }
 
+/* Mensaje de agradecimiento tras enviar la solicitud: ocupa el lugar del formulario */
+.form-thanks {
+  display: grid; gap: 1rem; justify-items: center;
+  width: min(100%, 46rem);
+  padding: clamp(2.5rem, 6vw, 4rem) clamp(1.5rem, 4vw, 2.75rem);
+  text-align: center;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-soft);
+  color: var(--navy-soft);
+  outline: none;
+}
+.form-thanks[hidden] { display: none; }
+.form-thanks h3 { font-family: var(--serif); font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem); line-height: 1.2; color: var(--navy); }
+.form-thanks h3::after { content: ""; display: block; width: 4.5rem; height: 2px; margin: 1.2rem auto 0; background: var(--sun); }
+.form-thanks p { max-width: 38ch; }
+.form-thanks-sign { display: grid; gap: .35rem; margin-top: 1rem; }
+.form-thanks-sign strong { font-size: clamp(.68rem, .6rem + .4vw, .8rem); font-weight: 500; letter-spacing: .16em; color: var(--navy); }
+.form-thanks-sign span { font-family: var(--serif); font-size: 1.05rem; color: var(--navy); }
+
 @media (max-width: 759.98px) {
   .contact-list { display: grid; justify-content: center; justify-items: start; gap: 1rem; }
 }

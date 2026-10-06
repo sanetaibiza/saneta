@@ -436,8 +436,8 @@
         </header>
 
         <!-- FORMULARIO DE PRESUPUESTO
-             El envío se configura en js/config.js → FORM_ENDPOINT.
-             Sin configurar, abre el correo del visitante con la solicitud redactada para sanetaibiza@gmail.com. -->
+             El envío se configura en js/config.js → FORM_ENDPOINT (servicio FormSubmit, que lo reenvía a sanetaibiza@gmail.com).
+             Si se deja vacío, abre el correo del visitante con la solicitud redactada. -->
         <form class="quote-form" id="quote-form" novalidate data-reveal aria-labelledby="contacto-title">
           <div class="form-grid">
             <div class="field">
@@ -503,8 +503,16 @@
           <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
 
           <button class="btn btn-primary btn-block" type="submit">Solicitar presupuesto</button>
-          <p class="form-note" id="form-note">Al pulsar el botón se abrirá tu correo con la solicitud ya escrita: solo tendrás que enviarla.</p>
+          <p class="form-note" id="form-note">Recibiremos tu solicitud al momento y te responderemos por email o teléfono.</p>
         </form>
+
+        <!-- Mensaje de agradecimiento: sustituye al formulario cuando la solicitud se ha enviado -->
+        <div class="form-thanks" id="form-thanks" role="status" tabindex="-1" hidden>
+          <h3>¡Gracias por contactar con SA NETA!</h3>
+          <p>Hemos recibido tu solicitud correctamente.</p>
+          <p>Nos pondremos en contacto contigo lo antes posible para preparar un presupuesto adaptado a tus necesidades.</p>
+          <p class="form-thanks-sign"><strong>SA NETA · LIMPIEZA PROFESIONAL</strong><span>Tu espacio más limpio, más tuyo.</span></p>
+        </div>
 
         <!-- Datos de contacto, debajo del formulario -->
         <div class="contact-info" data-reveal>
