@@ -194,6 +194,43 @@
       figure.appendChild(name);
       list.appendChild(figure);
     });
+
+    /* Con más de tres opiniones se muestran en una fila que se pasa con las flechas (o deslizando en el móvil) */
+    if (data.length <= 3) return;
+    list.classList.add("is-carousel");
+    list.setAttribute("tabindex", "0");
+    list.setAttribute("role", "group");
+    list.setAttribute("aria-label", "Opiniones de clientes. Usa las flechas para ver más.");
+
+    var nav = document.createElement("div");
+    nav.className = "testimonials-nav";
+    var arrow = '<svg class="icon icon-line" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
+    function makeButton(label, dir) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "round-btn" + (dir < 0 ? " is-prev" : "");
+      b.setAttribute("aria-label", label);
+      b.innerHTML = arrow;
+      b.addEventListener("click", function () {
+        var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        list.scrollBy({ left: dir * list.clientWidth, behavior: reduce ? "auto" : "smooth" });
+      });
+      return b;
+    }
+    var prev = makeButton("Opiniones anteriores", -1);
+    var next = makeButton("Más opiniones", 1);
+    nav.appendChild(prev);
+    nav.appendChild(next);
+    list.parentNode.insertBefore(nav, list.nextSibling);
+
+    function update() {
+      var max = list.scrollWidth - list.clientWidth;
+      prev.disabled = list.scrollLeft <= 2;
+      next.disabled = list.scrollLeft >= max - 2;
+    }
+    list.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
   }
 
   /* ---------- 6. Formulario de presupuesto ---------- */

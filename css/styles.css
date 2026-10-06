@@ -667,41 +667,65 @@ h2 {
   .gallery-item:last-child { grid-column: span 2; aspect-ratio: 16 / 9; }
 }
 
-/* 12. OPINIONES */
+/* 12. OPINIONES: tarjetas azul claro, como las de «¿Por qué SA NETA?» */
 .testimonials {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
-  gap: clamp(1rem, 2vw, 1.75rem);
+  gap: clamp(1rem, 2vw, 1.5rem);
 }
 .testimonial {
-  position: relative;
-  display: grid; gap: 1rem; align-content: start; justify-items: center;
-  padding: clamp(2rem, 3.5vw, 2.75rem) clamp(1.5rem, 3vw, 2.25rem);
+  display: grid; grid-template-rows: auto 1fr auto; gap: 1.1rem; justify-items: center;
+  margin: 0;
+  padding: clamp(1.75rem, 3vw, 2.5rem) clamp(1.5rem, 2.6vw, 2.25rem);
   text-align: center;
   border-radius: var(--radius-soft);
-  background: var(--white);
+  background: var(--sky-pale);
 }
-.stars { color: var(--navy); font-size: 1.05rem; letter-spacing: .28em; line-height: 1; }
+.testimonial:nth-child(even) { background: var(--sky-light); }
+.stars { color: var(--navy); font-size: 1rem; letter-spacing: .28em; line-height: 1; }
 .testimonial blockquote { margin: 0; }
 .testimonial blockquote p {
   font-family: var(--serif);
-  font-size: clamp(1.15rem, 1rem + .5vw, 1.35rem); line-height: 1.45;
+  font-size: clamp(1.1rem, 1rem + .4vw, 1.25rem); line-height: 1.5;
   color: var(--navy);
 }
+/* El nombre queda siempre abajo, a la misma altura en todas las tarjetas */
 .testimonial figcaption {
+  align-self: end;
+  padding-top: 1rem;
   font-size: .72rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase;
   color: var(--navy-soft);
 }
-.testimonial.is-placeholder { border: 1px dashed #8fb0d2; background: rgba(255, 255, 255, .6); }
-.testimonial.is-placeholder .stars, .testimonial.is-placeholder blockquote p { color: var(--navy-soft); }
-.pending-tag {
-  font-size: .68rem; font-weight: 500; letter-spacing: .12em;
-  padding: .3rem .7rem; border-radius: 999px;
-  background: var(--sky-light); color: var(--navy);
+.testimonial figcaption::before { content: ""; display: block; width: 2.5rem; height: 1px; margin: 0 auto 1rem; background: var(--navy-soft); opacity: .5; }
+
+/* Más de tres opiniones: una fila que se pasa con las flechas o deslizando */
+.testimonials.is-carousel {
+  --t-gap: clamp(1rem, 2vw, 1.5rem);
+  display: flex; gap: var(--t-gap);
+  overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.testimonials.is-carousel::-webkit-scrollbar { display: none; }
+.testimonials.is-carousel .testimonial { flex: 0 0 calc((100% - 2 * var(--t-gap)) / 3); scroll-snap-align: start; }
+.testimonials-nav { display: flex; justify-content: center; gap: .75rem; margin-top: 1.75rem; }
+.round-btn {
+  display: grid; place-items: center;
+  width: 3rem; height: 3rem; padding: 0;
+  border: 1px solid var(--navy); border-radius: 50%;
+  background: var(--white); color: var(--navy);
+  cursor: pointer;
+  transition: background-color .3s var(--ease), color .3s var(--ease), opacity .3s;
+}
+.round-btn:hover:not([disabled]) { background: var(--navy); color: var(--white); }
+.round-btn[disabled] { opacity: .35; cursor: default; }
+.round-btn.is-prev .icon { transform: scaleX(-1); }
+@media (max-width: 1019.98px) {
+  .testimonials.is-carousel .testimonial { flex-basis: calc((100% - var(--t-gap)) / 2); }
 }
 @media (max-width: 599.98px) {
-  /* En móvil basta una tarjeta de muestra mientras no haya opiniones reales */
-  .testimonial.is-placeholder:nth-child(n+2) { display: none; }
+  /* En móvil, una opinión cada vez; asoma el borde de la siguiente para que se vea que hay más */
+  .testimonials.is-carousel .testimonial { flex-basis: 86%; }
 }
 
 /* 13. CONTACTO Y FORMULARIO: título, formulario y, debajo, los datos de contacto en un panel azul claro */

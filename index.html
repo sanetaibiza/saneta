@@ -45,7 +45,7 @@
   <link rel="preload" as="image" type="image/webp" fetchpriority="high" href="assets/logo-simple-720.webp"
         imagesrcset="assets/logo-simple-360.webp 360w, assets/logo-simple-720.webp 720w" imagesizes="(max-width: 899px) 62vw, 26rem">
 
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=20261006c">
 
   <!-- Datos estructurados (schema.org). Solo contienen información real.
        La web, el logo y el teléfono se añaden solos desde js/config.js (SITE_URL, PHONE) cuando dejan de estar entre corchetes.
@@ -428,6 +428,7 @@
     <!-- Oculta (hidden) hasta que haya opiniones reales en js/config.js (TESTIMONIALS). Entonces se muestra sola.
          No escribir opiniones que no sean reales. -->
     <section class="section section-white" id="opiniones" aria-labelledby="opiniones-title" hidden>
+      <svg class="wave wave-white" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0,70 C220,20 430,8 700,38 C960,68 1180,92 1440,36 L1440,101 L0,101 Z"/></svg>
       <div class="wrap">
         <header class="section-head" data-reveal>
           <h2 id="opiniones-title">Lo que dicen nuestros clientes</h2>
@@ -608,7 +609,7 @@
     <a class="mobile-bar-main" href="#contacto"><svg class="icon icon-line" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h9l3.5 3.5v13.5H6Zm3 7.5h6.5M9 14.5h6.5M9 7.5h3"/></svg><span>Presupuesto</span></a>
   </nav>
 
-  <script src="js/config.js" defer></script>
-  <script src="js/main.js" defer></script>
+  <script src="js/config.js?v=20261006c" defer></script>
+  <script src="js/main.js?v=20261006c" defer></script>
 </body>
 </html>
