@@ -9,6 +9,63 @@
   var root = document.documentElement;
   root.classList.add("js");
 
+  /* Idioma de la página: la versión en inglés está en la carpeta en/ y lleva <html lang="en"> */
+  var isEn = (root.getAttribute("lang") || "").toLowerCase().indexOf("en") === 0;
+  var base = isEn ? "../" : "";   /* las páginas legales están un nivel por encima de en/ */
+  var TEXT = isEn ? {
+    openMenu: "Open menu", closeMenu: "Close menu",
+    rating: function (n) { return "Rating: " + n + " out of 5 stars"; },
+    reviewsLabel: "Client reviews. Use the arrows to see more.",
+    prevReviews: "Previous reviews", nextReviews: "More reviews",
+    errors: {
+      nombre: "Please enter your name.",
+      telefono: "Please enter a contact phone number.",
+      email: "Please enter a valid email, for example name@email.com.",
+      tipo_servicio: "Please select the type of service.",
+      frecuencia: "Please select the frequency.",
+      zona: "Please tell us the town or area.",
+      privacidad: "You need to accept the privacy policy and the legal notice to send your request."
+    },
+    checkField: "Please check this field.",
+    noteMail: "When you press the button, your email app will open with the request already written: you only need to send it.",
+    received: "We have received your request. We will reply as soon as possible.",
+    sendError: function (link) { return "We could not send your request. Please try again or write to us at " + link + "."; },
+    mailReady: function (link) { return "Your request is ready in your email app: you only need to press <strong>Send</strong>. If it has not opened, write to us at " + link + "."; },
+    noticeLabel: "Legal and cookie notice",
+    notice: function (b) {
+      return 'This website does not use tracking or advertising cookies. By accepting, you confirm that you have read the ' +
+        '<a href="' + b + 'aviso-legal.html">legal notice</a>, the <a href="' + b + 'politica-privacidad.html">privacy policy</a> and the ' +
+        '<a href="' + b + 'politica-cookies.html">cookie policy</a> (in Spanish).';
+    },
+    accept: "Accept"
+  } : {
+    openMenu: "Abrir menú", closeMenu: "Cerrar menú",
+    rating: function (n) { return "Valoración: " + n + " de 5 estrellas"; },
+    reviewsLabel: "Opiniones de clientes. Usa las flechas para ver más.",
+    prevReviews: "Opiniones anteriores", nextReviews: "Más opiniones",
+    errors: {
+      nombre: "Escribe tu nombre.",
+      telefono: "Escribe un teléfono de contacto.",
+      email: "Escribe un email válido, por ejemplo nombre@correo.com.",
+      tipo_servicio: "Selecciona el tipo de servicio.",
+      frecuencia: "Selecciona la frecuencia.",
+      zona: "Indica el municipio o la zona.",
+      privacidad: "Debes aceptar la política de privacidad y el aviso legal para enviar la solicitud."
+    },
+    checkField: "Revisa este campo.",
+    noteMail: "Al pulsar el botón se abrirá tu correo con la solicitud ya escrita: solo tendrás que enviarla.",
+    received: "Hemos recibido tu solicitud. Te responderemos lo antes posible.",
+    sendError: function (link) { return "No hemos podido enviar la solicitud. Inténtalo de nuevo o escríbenos a " + link + "."; },
+    mailReady: function (link) { return "Tu solicitud está preparada en tu aplicación de correo: solo falta pulsar <strong>Enviar</strong>. Si no se ha abierto, escríbenos a " + link + "."; },
+    noticeLabel: "Aviso legal y de cookies",
+    notice: function (b) {
+      return 'Esta web no utiliza cookies de seguimiento ni de publicidad. Al aceptar confirmas que has leído el ' +
+        '<a href="' + b + 'aviso-legal.html">aviso legal</a>, la <a href="' + b + 'politica-privacidad.html">política de privacidad</a> y la ' +
+        '<a href="' + b + 'politica-cookies.html">política de cookies</a>.';
+    },
+    accept: "Aceptar"
+  };
+
   /* Un dato está "pendiente" mientras siga vacío o entre corchetes: [TELÉFONO SA NETA] */
   function isPending(value) {
     return !value || /^\s*\[.*\]\s*$/.test(value);
@@ -47,7 +104,7 @@
       } else {
         var number = digits(cfg.WHATSAPP);
         if (number.length === 9) number = "34" + number; /* número español sin prefijo */
-        a.href = "https://wa.me/" + number + "?text=" + encodeURIComponent(cfg.WHATSAPP_MESSAGE || "");
+        a.href = "https://wa.me/" + number + "?text=" + encodeURIComponent((isEn && cfg.WHATSAPP_MESSAGE_EN) || cfg.WHATSAPP_MESSAGE || "");
         a.target = "_blank";
         a.rel = "noopener";
         a.removeAttribute("data-pending");
@@ -100,7 +157,7 @@
       toggle.setAttribute("aria-expanded", String(open));
       nav.classList.toggle("is-open", open);
       root.classList.toggle("menu-open", open);
-      if (label) label.textContent = open ? "Cerrar menú" : "Abrir menú";
+      if (label) label.textContent = open ? TEXT.closeMenu : TEXT.openMenu;
     }
     toggle.addEventListener("click", function () {
       setOpen(toggle.getAttribute("aria-expanded") !== "true");
@@ -178,7 +235,7 @@
       var rating = document.createElement("p");
       rating.className = "stars";
       rating.setAttribute("role", "img");
-      rating.setAttribute("aria-label", "Valoración: " + stars + " de 5 estrellas");
+      rating.setAttribute("aria-label", TEXT.rating(stars));
       rating.textContent = "★★★★★".slice(0, stars);
 
       var quote = document.createElement("blockquote");
@@ -200,7 +257,7 @@
     list.classList.add("is-carousel");
     list.setAttribute("tabindex", "0");
     list.setAttribute("role", "group");
-    list.setAttribute("aria-label", "Opiniones de clientes. Usa las flechas para ver más.");
+    list.setAttribute("aria-label", TEXT.reviewsLabel);
 
     var nav = document.createElement("div");
     nav.className = "testimonials-nav";
@@ -217,8 +274,8 @@
       });
       return b;
     }
-    var prev = makeButton("Opiniones anteriores", -1);
-    var next = makeButton("Más opiniones", 1);
+    var prev = makeButton(TEXT.prevReviews, -1);
+    var next = makeButton(TEXT.nextReviews, 1);
     nav.appendChild(prev);
     nav.appendChild(next);
     list.parentNode.insertBefore(nav, list.nextSibling);
@@ -234,15 +291,7 @@
   }
 
   /* ---------- 6. Formulario de presupuesto ---------- */
-  var MESSAGES = {
-    nombre: "Escribe tu nombre.",
-    telefono: "Escribe un teléfono de contacto.",
-    email: "Escribe un email válido, por ejemplo nombre@correo.com.",
-    tipo_servicio: "Selecciona el tipo de servicio.",
-    frecuencia: "Selecciona la frecuencia.",
-    zona: "Indica el municipio o la zona.",
-    privacidad: "Debes aceptar la política de privacidad y el aviso legal para enviar la solicitud."
-  };
+  var MESSAGES = TEXT.errors;
 
   function initForm() {
     var form = document.getElementById("quote-form");
@@ -253,7 +302,7 @@
     /* El texto bajo el botón explica qué pasa al enviar, según cómo esté configurado el envío */
     var note = document.getElementById("form-note");
     if (note && !cfg.FORM_ENDPOINT) {
-      note.textContent = "Al pulsar el botón se abrirá tu correo con la solicitud ya escrita: solo tendrás que enviarla.";
+      note.textContent = TEXT.noteMail;
     }
 
     function setError(field, message) {
@@ -280,7 +329,7 @@
     function validate(field) {
       if (!field.willValidate) return true;
       var ok = field.checkValidity();
-      setError(field, ok ? "" : (MESSAGES[field.name] || "Revisa este campo."));
+      setError(field, ok ? "" : (MESSAGES[field.name] || TEXT.checkField));
       return ok;
     }
 
@@ -306,6 +355,7 @@
         tipo_servicio: f.tipo_servicio.value,
         zona: f.zona.value.trim(),
         frecuencia: f.frecuencia.value,
+        horario: f.horario.value.trim(),
         mensaje: f.mensaje.value.trim()
       };
     }
@@ -338,7 +388,9 @@
           "Tipo de servicio": data.tipo_servicio,
           "Zona": data.zona,
           "Frecuencia": data.frecuencia,
+          "Día y horario preferido": data.horario || "(sin indicar)",
           "Descripción del lugar": data.mensaje || "(sin descripción)",
+          "Idioma de la web": isEn ? "Inglés" : "Español",
           "_subject": "Solicitud de presupuesto · " + data.tipo_servicio + " · " + data.zona,
           "_template": "table",
           "_captcha": "false"
@@ -361,10 +413,10 @@
             thanks.focus();
             thanks.scrollIntoView({ block: "center" });
           } else {
-            showStatus("Hemos recibido tu solicitud. Te responderemos lo antes posible.");
+            showStatus(TEXT.received);
           }
         }).catch(function () {
-          showStatus("No hemos podido enviar la solicitud. Inténtalo de nuevo o escríbenos a " + emailLink + ".", true);
+          showStatus(TEXT.sendError(emailLink), true);
         }).then(function () {
           button.disabled = false;
         });
@@ -380,17 +432,19 @@
         "Tipo de servicio: " + data.tipo_servicio,
         "Zona: " + data.zona,
         "Frecuencia: " + data.frecuencia,
+        "Día y horario preferido: " + (data.horario || "(sin indicar)"),
         "",
         "Descripción del lugar:",
-        data.mensaje || "(sin descripción)"
+        data.mensaje || "(sin descripción)",
+        "",
+        "Idioma de la web: " + (isEn ? "Inglés" : "Español")
       ].join("\n");
 
       window.location.href = "mailto:" + cfg.EMAIL +
         "?subject=" + encodeURIComponent(subject) +
         "&body=" + encodeURIComponent(body);
 
-      showStatus("Tu solicitud está preparada en tu aplicación de correo: solo falta pulsar <strong>Enviar</strong>. " +
-        "Si no se ha abierto, escríbenos a " + emailLink + ".");
+      showStatus(TEXT.mailReady(emailLink));
     });
   }
 
@@ -407,10 +461,10 @@
     try {
       var data = JSON.parse(node.textContent);
       if (!isPending(cfg.SITE_URL)) {
-        var base = cfg.SITE_URL.replace(/\/+$/, "");
-        data.url = base + "/";
-        data.logo = base + "/assets/logo-oficial.png";
-        data.image = base + "/assets/og-image.jpg";
+        var siteBase = cfg.SITE_URL.replace(/\/+$/, "");
+        data.url = siteBase + (isEn ? "/en/" : "/");
+        data.logo = siteBase + "/assets/logo-oficial.png";
+        data.image = siteBase + "/assets/og-image.jpg";
       }
       if (!isPending(cfg.PHONE)) {
         data.telephone = (cfg.PHONE.trim().charAt(0) === "+" ? "+" : "") + digits(cfg.PHONE);
@@ -428,12 +482,9 @@
 
     var box = document.createElement("section");
     box.className = "notice";
-    box.setAttribute("aria-label", "Aviso legal y de cookies");
-    box.innerHTML =
-      '<p>Esta web no utiliza cookies de seguimiento ni de publicidad. Al aceptar confirmas que has leído el ' +
-      '<a href="aviso-legal.html">aviso legal</a>, la <a href="politica-privacidad.html">política de privacidad</a> y la ' +
-      '<a href="politica-cookies.html">política de cookies</a>.</p>' +
-      '<button class="btn btn-primary btn-small" type="button">Aceptar</button>';
+    box.setAttribute("aria-label", TEXT.noticeLabel);
+    box.innerHTML = "<p>" + TEXT.notice(base) + "</p>" +
+      '<button class="btn btn-primary btn-small" type="button">' + TEXT.accept + "</button>";
     document.body.appendChild(box);
 
     box.querySelector("button").addEventListener("click", function () {

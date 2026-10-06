@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://sanetaibiza.github.io/saneta/</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://sanetaibiza.github.io/saneta/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanetaibiza.github.io/saneta/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanetaibiza.github.io/saneta/en/"/>
+  </url>
+  <url>
+    <loc>https://sanetaibiza.github.io/saneta/en/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanetaibiza.github.io/saneta/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanetaibiza.github.io/saneta/en/"/>
+  </url>
   <url><loc>https://sanetaibiza.github.io/saneta/aviso-legal.html</loc></url>
   <url><loc>https://sanetaibiza.github.io/saneta/politica-privacidad.html</loc></url>
   <url><loc>https://sanetaibiza.github.io/saneta/politica-cookies.html</loc></url>

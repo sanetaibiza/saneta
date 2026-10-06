@@ -13,6 +13,9 @@ const COMPANY_SUBTITLE = "LIMPIEZA PROFESIONAL";
 
 const TAGLINE = "Tu espacio más limpio, más tuyo.";
 
+/* El eslogan en la versión en inglés de la web (carpeta en/). */
+const TAGLINE_EN = "Your space, cleaner and truly yours.";
+
 const EMAIL = "sanetaibiza@gmail.com";
 
 /* TELÉFONO — todavía sin definir.
@@ -37,6 +40,9 @@ const SITE_URL = "https://sanetaibiza.github.io/saneta";
 
 /* Mensaje que aparece ya escrito al abrir WhatsApp. */
 const WHATSAPP_MESSAGE = "Hola, me gustaría solicitar un presupuesto de limpieza.";
+
+/* El mismo mensaje para quien escribe desde la versión en inglés. */
+const WHATSAPP_MESSAGE_EN = "Hello, I would like to request a cleaning quote.";
 
 /* --------------------------------------------------------------------------
    ENVÍO DEL FORMULARIO DE PRESUPUESTO
@@ -83,6 +89,6 @@ const SHOW_GALLERY = false;
 
 /* No modificar a partir de aquí. */
 window.SA_NETA = {
-  COMPANY_NAME, COMPANY_SUBTITLE, TAGLINE, EMAIL, PHONE, WHATSAPP, LOCATION,
-  WHATSAPP_MESSAGE, FORM_ENDPOINT, TESTIMONIALS, SHOW_TESTIMONIALS, SHOW_GALLERY, SITE_URL,
+  COMPANY_NAME, COMPANY_SUBTITLE, TAGLINE, TAGLINE_EN, EMAIL, PHONE, WHATSAPP, LOCATION,
+  WHATSAPP_MESSAGE, WHATSAPP_MESSAGE_EN, FORM_ENDPOINT, TESTIMONIALS, SHOW_TESTIMONIALS, SHOW_GALLERY, SITE_URL,
 };
