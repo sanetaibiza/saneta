@@ -800,6 +800,9 @@ h2 {
 }
 .optional { font-weight: 400; letter-spacing: .04em; text-transform: none; color: var(--navy-soft); }
 .field-hint { font-size: .82rem; line-height: 1.45; color: var(--navy-soft); }
+/* El ejemplo del campo de horario es largo: en pantallas estrechas se muestra algo más pequeño para que quepa entero */
+#f-horario { text-overflow: ellipsis; }
+@media (max-width: 479.98px) { #f-horario::placeholder { font-size: .85em; } }
 
 .field input[type="text"], .field input[type="tel"], .field input[type="email"],
 .field select, .field textarea {
