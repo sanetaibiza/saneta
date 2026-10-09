@@ -400,19 +400,37 @@ h2 {
 }
 .hero-door {
   position: relative;
-  display: grid; place-items: center;
-  padding: 21% 7% calc(8% + var(--wave-h) * .5);
+  display: grid; place-items: center; grid-template-columns: minmax(0, 1fr);
+  padding: 21% 7% calc(4% + var(--wave-h) * .5);
   background: var(--white);
   border-radius: 999px 999px 0 0;
   overflow: hidden;
 }
 .hero-logo { width: 100%; height: auto; }
+/* Servicios bajo el logo: dos líneas pequeñas, en mayúsculas y centradas */
+.hero-services {
+  display: grid; gap: .35rem; justify-items: center;
+  margin-top: clamp(1.1rem, 2.2vw, 1.6rem);
+  font-family: var(--sans);
+  font-size: clamp(.66rem, .6rem + .3vw, .8rem); font-weight: 500; line-height: 1.5;
+  letter-spacing: .2em; text-transform: uppercase; text-align: center;
+  color: var(--navy);
+}
+.hero-services span { display: block; white-space: nowrap; }
+@media (max-width: 899.98px) {
+  /* En móvil el arco es estrecho: letra y espaciado algo menores para que cada línea quepa entera */
+  .hero-services { width: 100%; font-size: clamp(.56rem, .4rem + .9vw, .72rem); letter-spacing: .12em; gap: .25rem; }
+}
+@media (max-width: 419.98px) {
+  /* Móviles estrechos: las líneas aprovechan también el margen interior del arco y llevan menos espaciado */
+  .hero-services { width: auto; justify-self: stretch; margin-inline: -6%; letter-spacing: .06em; }
+}
 
 @media (max-width: 899.98px) {
   .hero { padding-top: calc(var(--header-h) + .5rem); padding-bottom: calc(var(--wave-h) + 2.5rem); }
   .hero-grid { grid-template-columns: minmax(0, 1fr); align-items: start; gap: 2rem; }
   .hero-door-wrap { order: 0; justify-self: center; width: min(76%, 23rem); }
-  .hero-door { padding: 21% 7% 9%; border-radius: 999px 999px var(--radius-soft) var(--radius-soft); }
+  .hero-door { padding: 21% 7% 8%; border-radius: 999px 999px var(--radius-soft) var(--radius-soft); }
   .hero-sun { width: 96%; left: 34%; top: -6%; }
   .hero-copy { justify-items: center; text-align: center; gap: 1.6rem; align-self: start; padding-top: 1.25rem; padding-bottom: 0; }
   .hero-title { max-width: 13em; }
