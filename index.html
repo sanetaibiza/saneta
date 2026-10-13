@@ -50,7 +50,7 @@
   <link rel="preload" as="image" type="image/webp" fetchpriority="high" href="assets/logo-simple-720.webp"
         imagesrcset="assets/logo-simple-360.webp 360w, assets/logo-simple-720.webp 720w" imagesizes="(max-width: 899px) 62vw, 26rem">
 
-  <link rel="stylesheet" href="css/styles.css?v=20261009b">
+  <link rel="stylesheet" href="css/styles.css?v=20261013b">
 
   <!-- Datos estructurados (schema.org). Solo contienen información real.
        La web, el logo y el teléfono se añaden solos desde js/config.js (SITE_URL, PHONE) cuando dejan de estar entre corchetes.
@@ -124,6 +124,15 @@
           "@type": "Service",
           "name": "Limpieza de urgencia en Ibiza",
           "description": "Limpiezas urgentes para imprevistos que no pueden esperar.",
+          "areaServed": "Ibiza"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Servicios de limpieza a medida en Ibiza",
+          "description": "Soluciones de limpieza adaptadas a tus necesidades, con una propuesta personalizada para tu vivienda, negocio o propiedad.",
           "areaServed": "Ibiza"
         }
       }
@@ -290,6 +299,18 @@
             </div>
             <h3><span class="sr-only">Limpieza de </span>Urgencias</h3>
             <p>Limpiezas urgentes para imprevistos que no pueden esperar. Organizamos el servicio lo antes posible.</p>
+          </article>
+          <article class="service" data-reveal>
+            <div class="service-top">
+              <img class="service-photo" src="assets/img/servicio-a-medida.webp"
+                   srcset="assets/img/servicio-a-medida-320.webp 320w, assets/img/servicio-a-medida-480.webp 480w, assets/img/servicio-a-medida.webp 800w"
+                   sizes="(min-width: 1020px) 18rem, (min-width: 560px) 46vw, 92vw"
+                   width="800" height="760" loading="lazy" decoding="async"
+                   alt="Mesa con una carpeta de propuesta y un bolígrafo junto a una rama de olivo, con vistas al mar">
+              <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M28 39H12.5a1.5 1.5 0 0 1-1.5-1.5v-26A1.5 1.5 0 0 1 12.5 10H16M28 10h3.5a1.5 1.5 0 0 1 1.5 1.5V22M18 7h8v6h-8zM16 20l2 2 3.5-3.5M24.5 20.5H29M16 28l2 2 3.5-3.5M24.5 28.5h1"/><circle cx="34" cy="33" r="3"/><path d="M34 25.5v2.5M34 38v2.5M26.5 33H29M39 33h2.5M28.7 27.7l1.8 1.8M37.5 36.5l1.8 1.8M28.7 38.3l1.8-1.8M37.5 29.5l1.8-1.8"/></svg></span>
+            </div>
+            <h3>Servicios a medida</h3>
+            <p>Soluciones de limpieza adaptadas a tus necesidades, para viviendas, negocios o propiedades.</p>
           </article>
         </div>
 
@@ -486,6 +507,7 @@
                 <option>Oficinas y locales</option>
                 <option>Cristales</option>
                 <option>Urgencias</option>
+                <option>Servicios a medida</option>
               </select>
             </div>
             <div class="field">
@@ -582,6 +604,7 @@
           <li><a href="#servicios">Oficinas y locales</a></li>
           <li><a href="#servicios">Cristales</a></li>
           <li><a href="#servicios">Urgencias</a></li>
+          <li><a href="#servicios">Servicios a medida</a></li>
         </ul>
       </div>
 
@@ -627,7 +650,7 @@
     <a class="mobile-bar-main" href="#contacto"><svg class="icon icon-line" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h9l3.5 3.5v13.5H6Zm3 7.5h6.5M9 14.5h6.5M9 7.5h3"/></svg><span>Presupuesto</span></a>
   </nav>
 
-  <script src="js/config.js?v=20261009b" defer></script>
-  <script src="js/main.js?v=20261009b" defer></script>
+  <script src="js/config.js?v=20261013b" defer></script>
+  <script src="js/main.js?v=20261013b" defer></script>
 </body>
 </html>
