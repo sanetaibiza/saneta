@@ -425,6 +425,10 @@ h2 {
   /* Móviles estrechos: las líneas aprovechan también el margen interior del arco y llevan menos espaciado */
   .hero-services { width: auto; justify-self: stretch; margin-inline: -6%; letter-spacing: .06em; }
 }
+@media (max-width: 359.98px) {
+  /* Móviles muy estrechos (320 px): un poco más de ancho y casi sin espaciado para que quepa cada línea */
+  .hero-services { margin-inline: -11%; letter-spacing: 0; }
+}
 
 @media (max-width: 899.98px) {
   .hero { padding-top: calc(var(--header-h) + .5rem); padding-bottom: calc(var(--wave-h) + 2.5rem); }
