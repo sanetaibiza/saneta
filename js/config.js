@@ -63,6 +63,17 @@ const WHATSAPP_MESSAGE_EN = "Hello, I would like to request a cleaning quote.";
 const FORM_ENDPOINT = "https://formsubmit.co/ajax/sanetaibiza@gmail.com";
 
 /* --------------------------------------------------------------------------
+   COPIA DE CADA SOLICITUD EN LA HOJA «SOLICITUDES» (Google Sheets)
+   --------------------------------------------------------------------------
+   Dirección de la aplicación web de Apps Script del archivo «SA NETA –
+   Presupuestos y facturación» (termina en /exec). No es una contraseña: solo
+   recibe solicitudes, igual que la dirección de FormSubmit.
+   · Vacía ("") = no se envía ninguna copia y todo funciona como antes.
+   · Si la copia fallase, el formulario y el correo siguen funcionando.
+   -------------------------------------------------------------------------- */
+const SHEETS_ENDPOINT = "https://script.google.com/macros/s/AKfycbxFmegBA2Tbz9y1uSSjdrl0rMjncKEyaFKeY0t05RZyr69tdEXczxxueq6AnpkZvhCi/exec";
+
+/* --------------------------------------------------------------------------
    OPINIONES DE CLIENTES
    --------------------------------------------------------------------------
    Añadir aquí únicamente opiniones reales. Ejemplo de formato:
@@ -90,5 +101,5 @@ const SHOW_GALLERY = false;
 /* No modificar a partir de aquí. */
 window.SA_NETA = {
   COMPANY_NAME, COMPANY_SUBTITLE, TAGLINE, TAGLINE_EN, EMAIL, PHONE, WHATSAPP, LOCATION,
-  WHATSAPP_MESSAGE, WHATSAPP_MESSAGE_EN, FORM_ENDPOINT, TESTIMONIALS, SHOW_TESTIMONIALS, SHOW_GALLERY, SITE_URL,
+  WHATSAPP_MESSAGE, WHATSAPP_MESSAGE_EN, FORM_ENDPOINT, SHEETS_ENDPOINT, TESTIMONIALS, SHOW_TESTIMONIALS, SHOW_GALLERY, SITE_URL,
 };

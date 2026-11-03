@@ -364,6 +364,32 @@
 
     var emailLink = '<a href="mailto:' + cfg.EMAIL + '">' + cfg.EMAIL + "</a>";
 
+    /* Copia de la solicitud en la hoja SOLICITUDES (SHEETS_ENDPOINT en config.js).
+       Se envía aparte y sin esperar respuesta: si fallase, no afecta al formulario ni al correo. */
+    function sendToSheet(data) {
+      if (!cfg.SHEETS_ENDPOINT || !window.fetch) return;
+      try {
+        fetch(cfg.SHEETS_ENDPOINT, {
+          method: "POST",
+          mode: "no-cors",
+          keepalive: true,
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({
+            nombre: data.nombre,
+            telefono: data.telefono,
+            email: data.email,
+            tipo_servicio: data.tipo_servicio,
+            zona: data.zona,
+            frecuencia: data.frecuencia,
+            horario: data.horario,
+            mensaje: data.mensaje,
+            idioma: isEn ? "Inglés" : "Español",
+            web: form.elements.web.value
+          })
+        }).catch(function () { /* la hoja no responde: el envío normal sigue */ });
+      } catch (err) { /* navegador antiguo: el envío normal sigue */ }
+    }
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       status.hidden = true;
@@ -377,6 +403,7 @@
       if (form.elements.web.value) return; /* campo trampa relleno: envío automático */
 
       var data = collect();
+      sendToSheet(data);
 
       /* A) Servicio de formularios configurado en config.js */
       if (cfg.FORM_ENDPOINT) {
