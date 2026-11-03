@@ -24,6 +24,7 @@
       tipo_servicio: "Please select the type of service.",
       frecuencia: "Please select the frequency.",
       zona: "Please tell us the town or area.",
+      mensaje: "Please tell us a little about the space so we can prepare your quote.",
       privacidad: "You need to accept the privacy policy and the legal notice to send your request."
     },
     checkField: "Please check this field.",
@@ -50,6 +51,7 @@
       tipo_servicio: "Selecciona el tipo de servicio.",
       frecuencia: "Selecciona la frecuencia.",
       zona: "Indica el municipio o la zona.",
+      mensaje: "Cuéntanos cómo es el espacio para poder preparar el presupuesto.",
       privacidad: "Debes aceptar la política de privacidad y el aviso legal para enviar la solicitud."
     },
     checkField: "Revisa este campo.",

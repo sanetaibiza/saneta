@@ -502,8 +502,9 @@
               <label for="f-servicio">Tipo de servicio</label>
               <select id="f-servicio" name="tipo_servicio" required>
                 <option value="" selected disabled>Selecciona una opción</option>
-                <option>Viviendas</option>
-                <option>Villas</option>
+                <option>Vivienda hasta 2 baños</option>
+                <option>Vivienda de más de 2 baños</option>
+                <option>Villa (con piscina o jardín)</option>
                 <option>Comunidades</option>
                 <option>Oficinas y locales</option>
                 <option>Cristales</option>
@@ -526,7 +527,7 @@
             <div class="field field-wide">
               <label for="f-horario">Día y horario preferido</label>
               <input id="f-horario" name="horario" type="text" autocomplete="off"
-                     placeholder="Ej.: Lunes y jueves a partir de las 10 / Flexible">
+                     placeholder="Ej.: Lunes y jueves de 10 a 12 / Flexible">
             </div>
             <div class="field field-wide">
               <label for="f-zona">Zona</label>
@@ -541,7 +542,7 @@
             </div>
             <div class="field field-wide">
               <label for="f-mensaje">Descripción del lugar</label>
-              <textarea id="f-mensaje" name="mensaje" rows="4" placeholder="Cuéntanos cómo es el espacio (tipo, tamaño aproximado, estancias) y qué necesitas."></textarea>
+              <textarea id="f-mensaje" name="mensaje" rows="4" required placeholder="Cuéntanos cómo es el espacio: nº de baños y habitaciones, metros aproximados, si tiene jardín o piscina, y qué tareas necesitas (plancha, cristales, cocina…)."></textarea>
             </div>
             <!-- Campo trampa contra envíos automáticos: debe quedar vacío y oculto. -->
             <div class="field-trap" aria-hidden="true">
@@ -652,6 +653,6 @@
   </nav>
 
   <script src="js/config.js?v=20261013b" defer></script>
-  <script src="js/main.js?v=20261013b" defer></script>
+  <script src="js/main.js?v=20261103" defer></script>
 </body>
 </html>

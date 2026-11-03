@@ -502,8 +502,9 @@
               <label for="f-servicio">Type of service</label>
               <select id="f-servicio" name="tipo_servicio" required>
                 <option value="" selected disabled>Select an option</option>
-                <option value="Viviendas">Homes</option>
-                <option value="Villas">Villas</option>
+                <option value="Vivienda hasta 2 baños">Home with up to 2 bathrooms</option>
+                <option value="Vivienda de más de 2 baños">Home with more than 2 bathrooms</option>
+                <option value="Villa (con piscina o jardín)">Villa (with pool or garden)</option>
                 <option value="Comunidades">Communities</option>
                 <option value="Oficinas y locales">Offices &amp; businesses</option>
                 <option value="Cristales">Windows</option>
@@ -526,7 +527,7 @@
             <div class="field field-wide">
               <label for="f-horario">Preferred day and time</label>
               <input id="f-horario" name="horario" type="text" autocomplete="off"
-                     placeholder="E.g. Mon and Thu from 10 am / Flexible">
+                     placeholder="E.g. Mon and Thu from 10 am to 12 pm / Flexible">
             </div>
             <div class="field field-wide">
               <label for="f-zona">Area</label>
@@ -541,7 +542,7 @@
             </div>
             <div class="field field-wide">
               <label for="f-mensaje">Description of the place</label>
-              <textarea id="f-mensaje" name="mensaje" rows="4" placeholder="Tell us about the space (type, approximate size, rooms) and what you need."></textarea>
+              <textarea id="f-mensaje" name="mensaje" rows="4" required placeholder="Tell us about the space: number of bathrooms and bedrooms, approximate size in m², whether it has a garden or pool, and which tasks you need (ironing, windows, kitchen…)."></textarea>
             </div>
             <!-- Campo trampa contra envíos automáticos: debe quedar vacío y oculto. -->
             <div class="field-trap" aria-hidden="true">
@@ -652,6 +653,6 @@
   </nav>
 
   <script src="../js/config.js?v=20261013b" defer></script>
-  <script src="../js/main.js?v=20261013b" defer></script>
+  <script src="../js/main.js?v=20261103" defer></script>
 </body>
 </html>
