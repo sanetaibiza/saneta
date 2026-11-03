@@ -529,15 +529,8 @@
                      placeholder="Ej.: Lunes y jueves de 10 a 12 / Flexible">
             </div>
             <div class="field field-wide">
-              <label for="f-zona">Zona</label>
-              <input id="f-zona" name="zona" type="text" list="zonas" autocomplete="address-level2" placeholder="Municipio o zona de Ibiza" required>
-              <datalist id="zonas">
-                <option value="Eivissa"></option>
-                <option value="Sant Antoni de Portmany"></option>
-                <option value="Sant Josep de sa Talaia"></option>
-                <option value="Santa Eulària des Riu"></option>
-                <option value="Sant Joan de Labritja"></option>
-              </datalist>
+              <label for="f-zona">Dirección completa</label>
+              <input id="f-zona" name="zona" type="text" autocomplete="street-address" minlength="10" placeholder="Calle, número y municipio" required>
             </div>
             <div class="field field-wide">
               <label for="f-mensaje">Descripción del lugar</label>
@@ -652,6 +645,6 @@
   </nav>
 
   <script src="js/config.js?v=20261103b" defer></script>
-  <script src="js/main.js?v=20261103b" defer></script>
+  <script src="js/main.js?v=20261103c" defer></script>
 </body>
 </html>
