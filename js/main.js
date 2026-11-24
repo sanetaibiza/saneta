@@ -11,7 +11,7 @@
 
   /* Idioma de la página: la versión en inglés está en la carpeta en/ y lleva <html lang="en"> */
   var isEn = (root.getAttribute("lang") || "").toLowerCase().indexOf("en") === 0;
-  var base = isEn ? "../" : "";   /* las páginas legales están un nivel por encima de en/ */
+  var base = "";   /* cada idioma tiene sus páginas legales en su misma carpeta (en/ para el inglés) */
   var TEXT = isEn ? {
     openMenu: "Open menu", closeMenu: "Close menu",
     rating: function (n) { return "Rating: " + n + " out of 5 stars"; },
@@ -23,7 +23,7 @@
       email: "Please enter a valid email, for example name@email.com.",
       tipo_servicio: "Please select the type of service.",
       frecuencia: "Please select the frequency.",
-      zona: "Please enter the full address: street, number and town.",
+      zona: "Please enter your town.",
       mensaje: "Please tell us a little about the space so we can prepare your quote.",
       privacidad: "You need to accept the privacy policy and the legal notice to send your request."
     },
@@ -36,7 +36,7 @@
     notice: function (b) {
       return 'This website does not use tracking or advertising cookies. By accepting, you confirm that you have read the ' +
         '<a href="' + b + 'aviso-legal.html">legal notice</a>, the <a href="' + b + 'politica-privacidad.html">privacy policy</a> and the ' +
-        '<a href="' + b + 'politica-cookies.html">cookie policy</a> (in Spanish).';
+        '<a href="' + b + 'politica-cookies.html">cookie policy</a>.';
     },
     accept: "Accept"
   } : {
@@ -50,7 +50,7 @@
       email: "Escribe un email válido, por ejemplo nombre@correo.com.",
       tipo_servicio: "Selecciona el tipo de servicio.",
       frecuencia: "Selecciona la frecuencia.",
-      zona: "Escribe la dirección completa: calle, número y municipio.",
+      zona: "Escribe tu localidad.",
       mensaje: "Cuéntanos cómo es el espacio para poder preparar el presupuesto.",
       privacidad: "Debes aceptar la política de privacidad y el aviso legal para enviar la solicitud."
     },
